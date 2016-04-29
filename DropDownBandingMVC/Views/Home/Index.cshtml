@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<select id="stateDropDown" onchange="GetCityList();">
+@foreach (var item in ViewBag.CitiesList as List<States>)
+{
+   
+    <option value="@item.StatedId">@item.StateName</option>
+    
+}
+
+
+</select><br /><br />
+
+<select id="cityDropDown">
+</select>
+
+<script type="text/javascript">
+    function GetCityList()
+    {
+        debugger;
+        var stateId = $("#stateDropDown").val();   //获取状态ID【通过获取sleect控件的值来得到option的value】
+        $.ajax({
+            url: "/Home/GetCityList",
+            type: "Post",
+            dataType: "application/json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                stateId: +stateId
+
+            }),
+            success: function (result)
+            {
+                $("#cityDropDown").html("");   //清空城市下拉框的内容
+                //jQuery.parseJSON()函数用于将格式完好的JSON字符串转为与之对应的JavaScript对象。
+               // 所谓"格式完好"，就是要求指定的字符串必须符合严格的JSON格式，例如：属性名称必须加双引号、字符串值也必须用双引号。
+                $.each($.parseJSON(result), function (i, city) {
+                    $("#cityDropDown").append($('<option></option>').val(city.CityID).html(city.CityName))
+
+                });
+                
+            },
+
+            error: function()
+            {
+               
+                alert("哦，My God 出错了！");
+            },
+
+        });
+
+
+
+
+
+    }
+
+
+</script>
