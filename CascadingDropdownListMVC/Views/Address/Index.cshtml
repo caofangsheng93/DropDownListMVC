@@ -1,0 +1,48 @@
+﻿@model CascadingDropdownListMVC.Models.AddressModel
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+        $("#CountryID").change(function () {
+            var selectedItem = $(this).val();//获取countryID值
+            var ddlStates = $("#StateID");   //获取state控件
+            var statesProgress = $("#states-loading-progress"); //获取加载控件
+            statesProgress.show();
+            $.ajax({
+                cache: false,
+                type: "Get",
+                url: "@Url.RouteUrl("GetStatesByCountryID")",
+                data: { "countryID": selectedItem },
+                success: function (data)
+                {
+                    ddlStates.html("");
+                    $.each(data, function (id, option) {
+                        ddlStates.append($('<option></option>').val(option.id).html(option.name));
+
+                    });
+                    statesProgress.hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Failed to retrieve states.');
+                    statesProgress.hide();
+                }
+
+            });
+
+        })
+
+    });
+
+</script>
+
+
+@Html.LabelFor(model=>model.CountryID)
+@Html.DropDownListFor(model=>model.CountryID,Model.AvailableCountries)
+<br />
+
+@Html.LabelFor(model=>model.StateID)
+@Html.DropDownListFor(model=>model.StateID,Model.AvailableStates)
+<span id ="states-loading-progress" style="display: none;">Please wait..</span>
