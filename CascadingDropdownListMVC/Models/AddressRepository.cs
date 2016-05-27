@@ -21,7 +21,7 @@ namespace CascadingDropdownListMVC.Models
             var query = from countries in _dataContext.Country select countries;
             var content = query.ToList();
             return content;
-            //throw new NotImplementedException();
+            //throw new NotImplementedException();  
         }
 
         public IList<State> GetAllStatesByCountryID(int countryID)
