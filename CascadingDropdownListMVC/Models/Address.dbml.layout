@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Address">
+  <DataContextMoniker Name="/AddressDataContext" />
+  <nestedChildShapes>
+    <classShape Id="73235ed3-2195-4d68-82b1-a12fd53ccce9" absoluteBounds="6.125, 2.125, 2, 1.1895064290364581">
+      <DataClassMoniker Name="/AddressDataContext/Country" />
+      <nestedChildShapes>
+        <elementListCompartment Id="94ea3497-dc1f-4b3d-8acf-a6ff6d4ad048" absoluteBounds="6.14, 2.585, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="95a6519f-0ace-4967-8c40-bd1223e68e90" absoluteBounds="2.125, 2.125, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/AddressDataContext/State" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8817dc4c-47b8-4d2d-902f-2347f71d551d" absoluteBounds="2.1399999999999997, 2.585, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 2.71975321451823); (4.125 : 2.71975321451823)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AddressDataContext/Country/Country_State" />
+      <nodes>
+        <classShapeMoniker Id="73235ed3-2195-4d68-82b1-a12fd53ccce9" />
+        <classShapeMoniker Id="95a6519f-0ace-4967-8c40-bd1223e68e90" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

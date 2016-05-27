@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DemoDB" Class="AddressDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=DemoDB;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DemoDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Country" Member="Country">
+    <Type Name="Country">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Country_State" Member="State" ThisKey="ID" OtherKey="CountryId" Type="State" />
+    </Type>
+  </Table>
+  <Table Name="dbo.State" Member="State">
+    <Type Name="State">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Country_State" Member="Country" ThisKey="CountryId" OtherKey="ID" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
