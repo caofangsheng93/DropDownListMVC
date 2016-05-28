@@ -14,7 +14,8 @@
             $.ajax({
                 cache: false,
                 type: "Get",
-                url: "@Url.RouteUrl("GetStatesByCountryID")",
+                url:"Address/GetStatesByCountryID",
+                @*url: "@Url.RouteUrl("GetStatesByCountryID")",*@
                 data: { "countryID": selectedItem },
                 success: function (data)
                 {
