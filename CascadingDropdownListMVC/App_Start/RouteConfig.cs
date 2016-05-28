@@ -19,13 +19,13 @@ namespace CascadingDropdownListMVC
                 defaults: new { controller = "Address", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "GetStatesByCountryID",
-                url: "Address/GetStatesByCountryID",
-                defaults: new { controller = "Address", action = "GetStatesByCountryID" },
-                namespaces: new[] { "CascadingDropdownListMVC.Controllers" }
+            //routes.MapRoute(
+            //    name: "GetStatesByCountryID",
+            //    url: "Address/GetStatesByCountryID",
+            //    defaults: new { controller = "Address", action = "GetStatesByCountryID" },
+            //    namespaces: new[] { "CascadingDropdownListMVC.Controllers" }
 
-                );
+            //    );
         }
     }
 }
